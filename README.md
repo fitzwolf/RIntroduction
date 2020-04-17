@@ -47,7 +47,6 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-[Previously saved workspace restored]
 ---------------------------------
 at the > type R.Version() and confirm you get values returned.
 
