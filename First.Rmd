@@ -1,0 +1,36 @@
+---
+title: "R Beginnings"
+output: html_document
+---
+---
+title: "R Beginnings"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Understanding R atomic elements
+R comes with basic data types, these store values such as 1, 1.25, 1e-06, "test", TRUE and other values of this nature.
+the basic types are:
+**Numeric:** this one represents numbers, it includes numbers that are both real or integer such as 1, 2, 1.2,1.5  
+**Integer** this is numbers that have no decimals only such as 1, 2, 3 they will always end in an L so 1 would be 1L if it's an integer instead of a numeric.  
+**Character** these are words, single characters, etc. They will be surrounded by quotes. Examples: "A","b","This is a character string"  
+**logical** this represents true and false conditions. They are represented as TRUE, FALSE, T, F. when R returns these values it will be TRUE/FALSE  
+**complex** complex numbers involving real and imaginary numbers.  
+
+more information available here: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/  
+To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file.
+
+```{r atomic-types}
+x <- 10 # What type is this? Numeric or Integer?
+typeof(x)
+y <- 10L
+typeof(y)
+z <- 1+4i
+typeof(z)
+
+# Fill out below this line to try the other 2 data types.
+
+```
