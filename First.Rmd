@@ -6,6 +6,9 @@ output: html_document
 title: "R Beginnings"
 output: html_document
 ---
+When you download this document into Rstudio you should in the border for this window a button that says 'knit', if you click the pull down arrow
+there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that
+you can read along while working with the first.R file directly.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -22,6 +25,8 @@ the basic types are:
 
 more information available here: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/  
 To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file.
+You will notice that in R the <- sequence is used to assign values, just train your brain to think of this as assigning the values to the right
+to whatever is "pointed" to by the arrow rather than using = signs. For functions you will often use the = sign for passing arguments.
 
 ```{r atomic-types}
 x <- 10 # What type is this? Numeric or Integer?
@@ -34,3 +39,33 @@ typeof(z)
 # Fill out below this line to try the other 2 data types.
 
 ```
+
+## Vectors
+An important data type in R is the vector, you can think of it as a single column in excel/open office. You make vectors with the c() statement.
+some examples of vectors, practice making a few others these are used a lot when working in R
+
+```{r vectors}
+my_names <- c("Spongebob","Patrick","Plankton","Karen")
+my_names
+my_ints <- c(1,2,3)
+my_ints
+```
+
+## Data frames  
+
+The other data type that you will use for most of your work are data frames. You can think of data frames as an excel spreadsheet, they have columns
+and rows and different types of data stored in each column. All columns must have the same data in them but each column can be a different data type.
+the next bit of code will build a small data frame that we can work with. Data frames have a lot of information that can be modified and it is a good
+idea to use R's built-in help to understand what you can do. to access it you do ?data.frame (replace data.frame with whatever you are curious about.)
+
+```{r data-frames}
+x <- c(1,2,3)
+y <- c("a","b","c")
+z <- c(TRUE, FALSE, FALSE)
+my_data <- data.frame(x,y,z,row.names=c("X","Y","Z"))
+my_data
+```
+
+A very useful utility in R is the help feature. You can ask about any function and get some additional information by using it. Lets try it out with data.frames
+to get a better picture of what they really do. To access this you use ?<function_name>, try this now with data frame: ?data.frame and read through to find out
+how to get the names of the columns and ask what are the current column names for my_data.
