@@ -23,3 +23,6 @@ my_data
 
 
 ## also try and figure out how to rename the column names to be "X Value","Y Value", "Z Value"
+
+###### Read CSV section, for this section try it on your own first. Remember you can ask about the function
+### with ?read.csv, it may seem daunting at first glance but mess around and see if you can figure it out.

@@ -6,27 +6,32 @@ output: html_document
 title: "R Beginnings"
 output: html_document
 ---
-When you download this document into Rstudio you should in the border for this window a button that says 'knit', if you click the pull down arrow
-there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that
-you can read along while working with the first.R file directly.
+
++++++++++++++++++++++++++++++++++  READ HERE FIRST +++++++++++++++++++++++++++++++++++++++++++++++++++
+When you download this document into Rstudio you should see a button that says 'knit' directly above (next to the magnifying glass), if you click the pull down arrow  
+there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that  
+you can read along while working with the first.R file directly.  
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Understanding R atomic elements
-R comes with basic data types, these store values such as 1, 1.25, 1e-06, "test", TRUE and other values of this nature.
-the basic types are:
-**Numeric:** this one represents numbers, it includes numbers that are both real or integer such as 1, 2, 1.2,1.5  
-**Integer** this is numbers that have no decimals only such as 1, 2, 3 they will always end in an L so 1 would be 1L if it's an integer instead of a numeric.  
+## Understanding R atomic elements  
+R comes with basic data types, these store values such as 1, 1.25, 1e-06, "test", TRUE and other values of this nature.  
+the basic types are:  
+**Numeric** this one represents numbers, it includes numbers that are both real or integer such as 1, 2, 1.2,1.5  
+**Integer** this is numbers that have no decimals only such as 1, 2, 3 they will always end in an L so 1 would be 1L if it's an integer instead of a numeric. If you use an integer it will use less memory, not as important with today's computers but you might run into it in some code.
 **Character** these are words, single characters, etc. They will be surrounded by quotes. Examples: "A","b","This is a character string"  
-**logical** this represents true and false conditions. They are represented as TRUE, FALSE, T, F. when R returns these values it will be TRUE/FALSE  
-**complex** complex numbers involving real and imaginary numbers.  
+**Logical** this represents true and false conditions. They are represented as TRUE or FALSE (all caps)    
+**Complex** complex numbers involving real and imaginary numbers.  
 
-more information available here: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/  
-To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file.
-You will notice that in R the <- sequence is used to assign values, just train your brain to think of this as assigning the values to the right
-to whatever is "pointed" to by the arrow rather than using = signs. For functions you will often use the = sign for passing arguments.
+more information available here: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/ 
+To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file.  
+You will notice that in R the <- sequence is used to assign values, just train your brain to think of this as assigning the values to the right  
+to whatever is "pointed" to by the arrow rather than using = signs. For functions you will often use the = sign for passing arguments.  
+In the next section of R code I use a function called typeof(), this function will return what the object is, such as  
+the basic types mentioned above.  
 
 ```{r atomic-types}
 x <- 10 # What type is this? Numeric or Integer?
@@ -40,9 +45,11 @@ typeof(z)
 
 ```
 
-## Vectors
-An important data type in R is the vector, you can think of it as a single column in excel/open office. You make vectors with the c() statement.
-some examples of vectors, practice making a few others these are used a lot when working in R
+## Vectors  
+An important data type in R is the vector, you can think of it as a single column in excel/open office. You make vectors with the c('value1','value2','etc') statement.  
+some examples of vectors are in the next r block, also you should practice making a few others these are used a lot when working in R  
+at least try and make one that has only TRUE, FALSE values in it and one with a series of numbers and finally  
+one that is a sequence of strings, maybe "bob","sam","bozo" if you are stuck for words.  
 
 ```{r vectors}
 my_names <- c("Spongebob","Patrick","Plankton","Karen")
@@ -53,10 +60,10 @@ my_ints
 
 ## Data frames  
 
-The other data type that you will use for most of your work are data frames. You can think of data frames as an excel spreadsheet, they have columns
-and rows and different types of data stored in each column. All columns must have the same data in them but each column can be a different data type.
-the next bit of code will build a small data frame that we can work with. Data frames have a lot of information that can be modified and it is a good
-idea to use R's built-in help to understand what you can do. to access it you do ?data.frame (replace data.frame with whatever you are curious about.)
+The other data type that you will use for most of your work are data frames. You can think of data frames as an excel spreadsheet, they have columns  
+and rows and different types of data stored in each column. All columns must have the same data in them but each column can be a different data type.  
+the next bit of code will build a small data frame that we can work with. Data frames have a lot of information that can be modified and it is a good  
+idea to use R's built-in help to understand what you can do. to access it you do ?data.frame (replace data.frame with whatever you are curious about.)  
 
 ```{r data-frames}
 x <- c(1,2,3)
@@ -66,6 +73,11 @@ my_data <- data.frame(x,y,z,row.names=c("X","Y","Z"))
 my_data
 ```
 
-A very useful utility in R is the help feature. You can ask about any function and get some additional information by using it. Lets try it out with data.frames
-to get a better picture of what they really do. To access this you use ?<function_name>, try this now with data frame: ?data.frame and read through to find out
-how to get the names of the columns and ask what are the current column names for my_data.
+A very useful utility in R is the help feature. You can ask about any function and get some additional information by using it. Lets try it out with data.frames  
+to get a better picture of what they really do. To access this you use ?<function_name>, try this now with data frame: ?data.frame and read through to find out  
+how to get the names of the columns and ask what are the current column names for my_data.  
+
+## Reading CSV files  
+One of the more common actions you will do is to get data from a csv file, such as a survival curve for your experiments. R has several functions for reading in   tables from files, and it has two specific for csv files. read.csv and read.csv2. The biggest difference between those 2 functions is read.csv assumes the   seperator is a "," and that "." is used for decimal points and read.csv2 assumes ";" is the seperator and "," is the decimal point.  
+In this repository there is a simple csv file that has some students, their current academic level and whether they like cake or pie. using the help  
+function in R try and determine how to read this file into a data.frame (hint: check the examples from ?read.csv)  
