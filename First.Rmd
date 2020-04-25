@@ -7,10 +7,8 @@ title: "R Beginnings"
 output: html_document
 ---
 
-+++++++++++++++++++++++++++++++++  READ HERE FIRST +++++++++++++++++++++++++++++++++++++++++++++++++++
-When you download this document into Rstudio you should see a button that says 'knit' directly above (next to the magnifying glass), if you click the pull down arrow  
-there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that  
-you can read along while working with the first.R file directly.  
++++++++++++++++++++++++++++++++++  READ HERE FIRST +++++++++++++++++++++++++++++++++++++++++++++++++++  
+When you download this document into Rstudio you should see a button that says 'knit' directly above (next to the magnifying glass), if you click the pull down arrow there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that you can read along while working with the first.R file directly.  
 
 
 ```{r setup, include=FALSE}
@@ -18,20 +16,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Understanding R atomic elements  
-R comes with basic data types, these store values such as 1, 1.25, 1e-06, "test", TRUE and other values of this nature.  
+R comes with basic data types, these store values such as 1, 1.25, 1e-06, "test", TRUE and other values of this nature.    
 the basic types are:  
 **Numeric** this one represents numbers, it includes numbers that are both real or integer such as 1, 2, 1.2,1.5  
-**Integer** this is numbers that have no decimals only such as 1, 2, 3 they will always end in an L so 1 would be 1L if it's an integer instead of a numeric. If you use an integer it will use less memory, not as important with today's computers but you might run into it in some code.
+**Integer** this is numbers that have no decimals only such as 1, 2, 3 they will always end in an L so 1 would be 1L if it's an integer instead of a numeric. If you use an integer it will use less memory, not as important with today's computers but you might run into it in some code.  
 **Character** these are words, single characters, etc. They will be surrounded by quotes. Examples: "A","b","This is a character string"  
 **Logical** this represents true and false conditions. They are represented as TRUE or FALSE (all caps)    
 **Complex** complex numbers involving real and imaginary numbers.  
 
 more information available here: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/ 
-To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file.  
-You will notice that in R the <- sequence is used to assign values, just train your brain to think of this as assigning the values to the right  
-to whatever is "pointed" to by the arrow rather than using = signs. For functions you will often use the = sign for passing arguments.  
-In the next section of R code I use a function called typeof(), this function will return what the object is, such as  
-the basic types mentioned above.  
+To accompany this markdown there is also "first.R" that only has the R code so you can experiment further with that file. You will notice that in R the <- sequence is used to assign values, just train your brain to think of this as assigning the values to the right to whatever is "pointed" to by the arrow rather than using = signs. For functions you will often use the = sign for passing arguments. In the next section of R code I use a function called typeof(), this function will return what the object is, such as the basic types mentioned above.  
 
 ```{r atomic-types}
 x <- 10 # What type is this? Numeric or Integer?
@@ -46,10 +40,7 @@ typeof(z)
 ```
 
 ## Vectors  
-An important data type in R is the vector, you can think of it as a single column in excel/open office. You make vectors with the c('value1','value2','etc') statement.  
-some examples of vectors are in the next r block, also you should practice making a few others these are used a lot when working in R  
-at least try and make one that has only TRUE, FALSE values in it and one with a series of numbers and finally  
-one that is a sequence of strings, maybe "bob","sam","bozo" if you are stuck for words.  
+An important data type in R is the vector, you can think of it as a single column in excel/open office. You make vectors with the c('value1','value2','etc') statement. some examples of vectors are in the next r block, it would be helpful to practice making a few others these constructs are used a lot when working in R. Try and make one that has only TRUE, FALSE values in it and one with a series of numbers and finally one that is a sequence of strings, maybe "bob","sam","bozo" if you are stuck for words.  
 
 ```{r vectors}
 my_names <- c("Spongebob","Patrick","Plankton","Karen")
@@ -60,10 +51,7 @@ my_ints
 
 ## Data frames  
 
-The other data type that you will use for most of your work are data frames. You can think of data frames as an excel spreadsheet, they have columns  
-and rows and different types of data stored in each column. All columns must have the same data in them but each column can be a different data type.  
-the next bit of code will build a small data frame that we can work with. Data frames have a lot of information that can be modified and it is a good  
-idea to use R's built-in help to understand what you can do. to access it you do ?data.frame (replace data.frame with whatever you are curious about.)  
+The other data type that you will use for most of your work are data frames. You can think of data frames as an excel spreadsheet, they have columns and rows and different types of data stored in each column. All columns must have the same data type in them but each column can be a different data type. The next bit of code will build a small data frame that we can work with. Data frames have a lot of information that can be modified and it is a good idea to use R's built-in help to understand what you can do. To access it you do ?data.frame (replace data.frame with whatever you are curious about.)  
 
 ```{r data-frames}
 x <- c(1,2,3)
@@ -73,11 +61,55 @@ my_data <- data.frame(x,y,z,row.names=c("X","Y","Z"))
 my_data
 ```
 
-A very useful utility in R is the help feature. You can ask about any function and get some additional information by using it. Lets try it out with data.frames  
-to get a better picture of what they really do. To access this you use ?<function_name>, try this now with data frame: ?data.frame and read through to find out  
-how to get the names of the columns and ask what are the current column names for my_data.  
+A very useful utility in R is the help feature. You can ask about any function and get some additional information by using it. Lets try it out with data.frames to get a better picture of what they really do. To access this you use ?<function_name>, try this now with data frame: ?data.frame and read through to find out how to get the names of the columns and ask what are the current column names for my_data.
 
+## Manipulating data frames
+
+Data frames contain a lot of data and there will be times you want just subsets of that data. There are many ways to get pieces of that data and we are going to look at a few useful ones now. The first way is using the '\$' after your dataframe and adding one of the column names. So lets regenerate the data from above first and then you can type my_data\$ and let rstudio show you the options, you should see x, y, z. select one of them, for example x, and hit enter you will get back all of the data in column x. Another useful and often used method is slicing, this involves access specific locations within the data_frame, in excel you might think of saying D3 and getting the 4th column, 3rd row's entry. This is accomplished in R by saying my_data[rowlocation,columnlocation], such as my_data[1,1] again using the data frame we made this should return what's in column x, row 1 or the number 1. But you can also use ranges or even say "the all columns or all rows". To accomplish ranges you use a syntax start:end so something like my_data[1:3,1] would return first column in rows 1-3 (in this case all rows since we have 3). To say all rows, or all columns, you leave that part blank. All rows, first column would be my_data[,1] and all columns, first row would be my_data[1,]. This feature of R data frames will be used a lot. It would be worth playing around more. Try getting say row 3, all columns; row 4, column 1 (what happens here?) etc.
+
+```{r data-frame-manip}
+x <- c(1,2,3)
+y <- c("a","b","c")
+z <- c(TRUE, FALSE, FALSE)
+my_data <- data.frame(x,y,z,row.names=c("X","Y","Z"))
+## accessing single columns
+my_data$x
+## location access / slicing
+my_data[1,1]
+my_data[1:3,1] # note that this is the same as my_data$x
+my_data[,1]
+my_data[1,]
+```
 ## Reading CSV files  
-One of the more common actions you will do is to get data from a csv file, such as a survival curve for your experiments. R has several functions for reading in   tables from files, and it has two specific for csv files. read.csv and read.csv2. The biggest difference between those 2 functions is read.csv assumes the   seperator is a "," and that "." is used for decimal points and read.csv2 assumes ";" is the seperator and "," is the decimal point.  
-In this repository there is a simple csv file that has some students, their current academic level and whether they like cake or pie. using the help  
-function in R try and determine how to read this file into a data.frame (hint: check the examples from ?read.csv)  
+One of the more common actions you will do is to get data from a csv file, such as a survival curve for your experiments. R has several functions for reading in   tables from files, and it has two specific for csv files. read.csv and read.csv2. The biggest difference between those 2 functions is read.csv assumes the   seperator is a "," and that "." is used for decimal points and read.csv2 assumes ";" is the seperator and "," is the decimal point. In this repository there is a simple csv file that has some students, their current academic level and whether they like cake or pie. using the help function in R try and determine how to read this file into a data.frame (hint: check the examples from ?read.csv)
+
+## Solving Mark's question: using the chemical:gene network map to look at his previously identified long-lived strains
+Date: April 24, 2020  
+During JC Mark posed an interesting challenge: How could we map his network hairball with the chemical:gene data from the science paper we are reading. So lets begin to work through this. First we need the data, fortunately the authors made that extremely easy and if you look at references 7,8 it's a website where the data is available: http://boonelab.ccbr.utoronto.ca/supplement/costanzo2009/ but if it wasn't and you are still on quarantine you can always get full text going through unm, information about how to do that is here: https://libguides.health.unm.edu/fulltext. So recall we want the dataset that is the chemical genomics data (S7), download and save that file somewhere handy. Open that file now, and look it over, you'll notice that the authors have in the first 2 columns all of the yeast systemic names(column 1) and common names if available(column 2). Look over the rest of the file to get an understanding of what you are looking at and if need be check back with the paper. The last step is you need to save this as a csv rather than xls, R offers some options for reading xls but it's not guaranteed to work and we know csv will. Now we can import that data in, so lets do that. Next we need Mark's list of long-lived genes, that's S2 from his paper, so grab that and repeat steps above. You'll notice that the top 2 lines of this file
+has some additional information that we don't want to read in, you can either remove it from the excel file or look at the read.csv help to ignore the first 2 lines. Ok so now we have the genes that are long lived and the chemical:gene map. Now what? Well the first thing we can do is select only those genes who have a long-lived genotype. This is where it becomes a bit tricky, looking at the 2 data frames we have now (you can click on them in the environment area), you'll notice one has upper case gene names and one has lower case. For computers this can cause problems in matching so lets first clean that up. There's a clever way to do that using an R function tolower (for all functions check the help, just a good habit to get into). Ok so lets make the gene lower case in our chem data frame.  
+
+Ok so now we have our selection columns matching, but how do we select against values in the second column. R has a beautiful command that we can combine into our slicing that does just that, it's called match and it will return a vector with all of the rows that match from a column. Since we haven't really messed with this much at this point I would look at t and make sure it's matching up gene wise with ll_strainsDF. Looking at the table you will also notice some NAs, how do we get rid of those? One way is to use subsetting again to pull out only those rows without NA. But now we have combined our tables and have a list of genes with the data from the science paper. Let's science now! (and probably ask Mark exactly what we can do with this.)
+``` {r Mark-challenge}
+chem_geneDF <- read.csv(file="chemgenomic_data_costanzo2009.csv")
+ll_strainsDF <- read.csv(file="NIHMS723630-supplement-2.csv")
+## Make all of the gene names lower case to help with matching  
+chem_geneDF$Gene <- tolower(chem_geneDF$Gene)
+t <- chem_geneDF[match(ll_strainsDF$Genotype,chem_geneDF$Gene),]
+
+## Lets get rid of NAs, Remember to specify the columns still, in these case we want them all so leave column blank   
+## like this [row,]  
+t <- t[!is.na(t$Gene),]
+HM <- t[,3:13]
+rownames(HM) <- t$Gene
+my_hm <- as.matrix(HM)
+heatmap(my_hm)
+
+
+```
+
+## Additional resources
+- fellow lab members
+- official cran introduction to R pdf: https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf
+- coursera r programming class (or other online courses, such as data camp)
+
+Within this tutorial in the bottom right section you should also see a file: help.R, it contains the code to answer any of the questions posted in this quick start tutorial.

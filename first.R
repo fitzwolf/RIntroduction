@@ -26,3 +26,4 @@ my_data
 
 ###### Read CSV section, for this section try it on your own first. Remember you can ask about the function
 ### with ?read.csv, it may seem daunting at first glance but mess around and see if you can figure it out.
+### it should look something like: my_data <- read.csv(<options>)
