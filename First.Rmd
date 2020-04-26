@@ -1,6 +1,8 @@
 ---
 title: "R Beginnings"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 ---
 title: "R Beginnings"
@@ -8,7 +10,11 @@ output: html_document
 ---
 
 +++++++++++++++++++++++++++++++++  READ HERE FIRST +++++++++++++++++++++++++++++++++++++++++++++++++++  
-When you download this document into Rstudio you should see a button that says 'knit' directly above (next to the magnifying glass), if you click the pull down arrow there's an option to generate pdf or html. If you generate the html you will get another window pop open with this in a slightly easier read format that you can read along while working with the first.R file directly.  
+When you download this document into Rstudio you should see a button that says 'knit' directly above (next to the magnifying glass), if you click the pull down arrow there's an option to generate pdf or html. If you generate the html you will get another window that opens up with this document in an easier to read format that you can read along while working with the first.R file directly.  
+
+## Useful shortcuts for RStudio
+
+In Rstudio if you have the script window highlighted (upper left window) you can use ctrl-enter or command-enter to execute a single line of code and you can use ctrl-shift-enter or command-shift-enter to execute all of the code in the window.
 
 
 ```{r setup, include=FALSE}
@@ -96,10 +102,14 @@ ll_strainsDF <- read.csv(file="NIHMS723630-supplement-2.csv")
 chem_geneDF$Gene <- tolower(chem_geneDF$Gene)
 t <- chem_geneDF[match(ll_strainsDF$Genotype,chem_geneDF$Gene),]
 
-## Lets get rid of NAs, Remember to specify the columns still, in these case we want them all so leave column blank   
-## like this [row,]  
+## Lets get rid of NAs, Remember to specify the columns still, in these case we want them all    
+## so leave column blank like this [row,]  
 t <- t[!is.na(t$Gene),]
+# next we need to get rid of all of the columns that aren't numeric values so we can send this
+# to the heatmap function. remember to understand a function use ?<function>
+# so you might also check out the heatmap function now
 HM <- t[,3:13]
+# So that our heatmap makes sense, this line puts the gene names as the rownames
 rownames(HM) <- t$Gene
 my_hm <- as.matrix(HM)
 heatmap(my_hm)
