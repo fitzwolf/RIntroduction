@@ -51,7 +51,7 @@ Type 'q()' to quit R.
 at the > type R.Version() and confirm you get values returned.
 
 ## Mac users
-on a mac open a terminal window **<command-space> Terminal** should get you a terminal window and type R. You should see the same output as described above for windows users.
+on a mac open a terminal window **(command-space) Terminal** should get you a terminal window and type R. You should see the same output as described above for windows users.
   
 # Rstudio
 Once you have confirmed R is working go to: https://rstudio.com/products/rstudio/download/
